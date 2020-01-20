@@ -11,6 +11,6 @@
     },
 
     "broker" : {
-        "uri" : "pyamqp://guest:guest@rabbitmq"
+        "uri" : "pyamqp://admin:admin@broker"
     }
 }

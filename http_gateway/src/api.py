@@ -29,7 +29,7 @@ class ApiModule():
                 
         with ClusterRpcProxy(self.broker_uri) as cluster_rpc:
             res = cluster_rpc.booking.find_by_plate_number(plate)
-            return res
+            return jsonify(res)
 
     # @auth.login_required
     def mqtt_publish(self):
@@ -41,4 +41,4 @@ class ApiModule():
                 
         with ClusterRpcProxy(self.broker_uri) as cluster_rpc:
             res = cluster_rpc.mqtt_relay.publish(topic, payload)
-            return res
+            return jsonify(res)
