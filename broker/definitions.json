@@ -1,0 +1,53 @@
+{
+    "rabbit_version": "3.8.2",
+    "users": [
+        {
+            "name": "mqtt",
+            "password": "1234",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": ""
+        },
+        {
+            "name": "admin",
+            "password": "admin",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "\/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "mqtt",
+            "vhost": "\/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "admin",
+            "vhost": "\/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "parameters": [],
+    "policies": [],
+    "queues": [],
+    "exchanges": [
+        {   
+            "name" : "mqtt",
+            "vhost" : "\/",
+            "type" : "topic",
+            "durable" : true,
+            "auto_delete" : false,
+            "internal" : false,
+            "arguments" : {}
+        }
+    ],
+    "bindings": []
+   }

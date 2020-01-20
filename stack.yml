@@ -1,24 +1,39 @@
 version: '2'
 
 services:
-    rabbitmq:
-        image: rabbitmq:3
+    broker:
+        build: broker/        
         restart: always
         ports:
+            - "1883:1883"
             # - "4369:4369"
             #- "5671:5671"
             - "5672:5672"
             #- "25672:25672"
+            - "15672:15672"
 
     # mosquitto:
-    #     build: /mosquitto
+    #     build: mosquitto/
+    #     restart: always
     #     ports:
     #         - "1883:1883"
 
     http_gateway:
         build: http_gateway/
         restart: always
+        depends_on:
+            - broker
         ports:
             - "5000:5000"
+
+    # mqtt_gateway:
+    #     build: mqtt_gateway/
+    #     restart: always
+    #     depends_on:
+    #         - broker
+    #         - mosquitto
+    #     environment:
+    #         - BROKER_HOST=broker
+    #         - BROKER_PORT=5672
 
     
